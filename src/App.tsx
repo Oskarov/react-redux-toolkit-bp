@@ -1,7 +1,14 @@
-import React from 'react';
-import './App.css';
+import React, {useEffect} from 'react';
+import {useDispatch} from "react-redux";
+import {getAllPlants} from "./controllers/plantsController";
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getAllPlants());
+    }, [])
+
     return (
         <div className="App">
 
