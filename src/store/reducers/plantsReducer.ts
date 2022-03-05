@@ -1,6 +1,8 @@
 import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IPlant, IPlantImport, IPlantsState} from "../../interfaces/IPlants";
 import transferProperties from "../../controllers/utils/transferProperties";
+import {Simulate} from "react-dom/test-utils";
+import select = Simulate.select;
 
 const plantsAdapter = createEntityAdapter<IPlant>({
     selectId: (plant) => plant.id,
@@ -20,10 +22,17 @@ const plantsSlice = createSlice({
             const transferItems = transferProperties(state.entities, payload, ['selected']);
             plantsAdapter.setAll(state, transferItems as IPlant[]);
         },
+        setSelectedAction: (state, {payload}: PayloadAction<string>) => {
+            const el = state.entities[payload];
+            if (el) {
+                el.selected = !el.selected
+            }
+        },
     },
 });
 
 export const plantsReducer = plantsSlice.reducer;
 export const {
-    setPlantsAction
+    setPlantsAction,
+    setSelectedAction
 } = plantsSlice.actions;
