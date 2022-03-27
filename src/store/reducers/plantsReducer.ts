@@ -1,8 +1,6 @@
 import {createEntityAdapter, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IPlant, IPlantImport, IPlantsState} from "../../interfaces/IPlants";
 import transferProperties from "../../controllers/utils/transferProperties";
-import {Simulate} from "react-dom/test-utils";
-import select = Simulate.select;
 
 const plantsAdapter = createEntityAdapter<IPlant>({
     selectId: (plant) => plant.id,

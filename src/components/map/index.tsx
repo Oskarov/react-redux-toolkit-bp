@@ -3,6 +3,8 @@ import {Map as YandexMap, YMapsApi,} from 'react-yandex-maps';
 import {useSelector} from "react-redux";
 import {IStore} from "../../store/store";
 import PlanetItem from "../plantItem";
+import {useGetAllCitiesQuery} from "../../services/citiesService";
+import CityItem from "../cityItem";
 
 interface MapProps {
 
@@ -17,7 +19,7 @@ const Map: React.FC<MapProps> = () => {
     const mapState = React.useMemo(() => ({center: centerCoordinates, zoom}), [
         zoom, centerCoordinates
     ]);
-
+    const { data, error, isLoading } = useGetAllCitiesQuery('');
     const {ids} = useSelector((state: IStore) => ({ids: state.plants.ids}));
 
 
@@ -29,6 +31,11 @@ const Map: React.FC<MapProps> = () => {
             {yMapsApi && yMapsRef &&
             <>
                 {ids.map(id => <PlanetItem id={id} key={id}/>)}
+            </>
+            }
+            {!!data && !isLoading &&
+            <>
+                {data.map(data => <CityItem key={data.id} {...data}/>)}
             </>
             }
         </YandexMap>
