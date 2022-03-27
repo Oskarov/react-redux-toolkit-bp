@@ -1,8 +1,5 @@
 import React from 'react';
 import {Placemark} from "react-yandex-maps";
-import {useDispatch, useSelector} from "react-redux";
-import {IStore} from "../../store/store";
-import {selectPlant} from "../../controllers/plantsController";
 import {ICitiesImport} from "../../interfaces/ICities";
 
 interface CityItemProps extends ICitiesImport{

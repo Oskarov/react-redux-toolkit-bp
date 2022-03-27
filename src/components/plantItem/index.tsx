@@ -4,11 +4,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {IStore} from "../../store/store";
 import {selectPlant} from "../../controllers/plantsController";
 
-interface PlanetItemProps {
+interface PlantItemProps {
     id: string
 }
 
-const PlanetItem: React.FC<PlanetItemProps> = ({id}) => {
+const PlantItem: React.FC<PlantItemProps> = ({id}) => {
     const {plant} = useSelector((state: IStore) => ({plant: state.plants.entities[id]}));
     const dispatch = useDispatch();
 
@@ -39,4 +39,4 @@ const PlanetItem: React.FC<PlanetItemProps> = ({id}) => {
     />}</>
 }
 
-export default PlanetItem;
+export default PlantItem;

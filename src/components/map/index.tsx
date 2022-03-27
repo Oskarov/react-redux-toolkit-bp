@@ -2,9 +2,9 @@ import React, {useRef, useState} from 'react';
 import {Map as YandexMap, YMapsApi,} from 'react-yandex-maps';
 import {useSelector} from "react-redux";
 import {IStore} from "../../store/store";
-import PlanetItem from "../plantItem";
 import {useGetAllCitiesQuery} from "../../services/citiesService";
 import CityItem from "../cityItem";
+import PlantItem from "../plantItem";
 
 interface MapProps {
 
@@ -30,7 +30,7 @@ const Map: React.FC<MapProps> = () => {
                    }}>
             {yMapsApi && yMapsRef &&
             <>
-                {ids.map(id => <PlanetItem id={id} key={id}/>)}
+                {ids.map(id => <PlantItem id={id} key={id}/>)}
             </>
             }
             {!!data && !isLoading &&
